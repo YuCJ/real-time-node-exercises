@@ -42,13 +42,13 @@ var
   port = 8006,
   host = "127.0.0.1",
 
-  ASQ = require("asynquence"),
+  // ASQ = require("asynquence"),
   node_static = require("node-static"),
   static_files = new node_static.Server(__dirname),
 
   io = require("socket.io").listen(httpserv);
 
-require("asynquence-contrib");
+// require("asynquence-contrib");
 
 // configure socket.io
 io.configure(function () {
