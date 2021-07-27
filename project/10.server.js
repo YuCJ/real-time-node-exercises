@@ -56,23 +56,9 @@ var
   node_static = require("node-static"),
   static_files = new node_static.Server(__dirname),
 
-  io = require("socket.io").listen(httpserv);
+  io = require("socket.io")(httpserv);
 
 // require("asynquence-contrib");
-
-
-// configure socket.io
-io.configure(function () {
-  io.enable("browser client minification"); // send minified client
-  io.enable("browser client etag"); // apply etag caching logic based on version number
-  io.set("log level", 1); // reduce logging
-  io.set("transports", [
-    "websocket",
-    "xhr-polling",
-    "jsonp-polling"
-  ]);
-});
-
 
 httpserv.listen(port, host);
 
