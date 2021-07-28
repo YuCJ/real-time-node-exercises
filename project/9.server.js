@@ -23,7 +23,10 @@ function connection(socket) {
   }
 
   function getmsg(msg) {
-    io.sockets.emit("broadcast", msg);
+    // To all:
+    io.sockets.emit("broadcast", '[all]' + msg);
+    // To others:
+    socket.broadcast.emit("broadcast", '[except sender]' + msg);
   }
 
   socket.on("disconnect", disconnect);
@@ -31,7 +34,7 @@ function connection(socket) {
 
   var intv = setInterval(function () {
     socket.emit("hello", Math.random());
-  }, 1000);
+  }, 10000);
 }
 
 
